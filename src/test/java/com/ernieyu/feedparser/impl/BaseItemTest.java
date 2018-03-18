@@ -1,6 +1,5 @@
 package com.ernieyu.feedparser.impl;
 
-import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 
 import org.junit.After;
@@ -22,7 +21,7 @@ public class BaseItemTest {
     private BaseItem item;
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp() {
         item = new Rss2Item(URI, NAME, new AttributesImpl());
         
         BaseElement title = new BaseElement(URI, "title");
@@ -43,7 +42,7 @@ public class BaseItemTest {
     }
 
     @After
-    public void tearDown() throws Exception {
+    public void tearDown() {
         item = null;
     }
 

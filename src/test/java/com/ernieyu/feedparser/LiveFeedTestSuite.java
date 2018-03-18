@@ -1,6 +1,5 @@
 package com.ernieyu.feedparser;
 
-import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
@@ -13,12 +12,6 @@ import java.util.logging.Logger;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-
-import com.ernieyu.feedparser.Feed;
-import com.ernieyu.feedparser.FeedParser;
-import com.ernieyu.feedparser.FeedParserFactory;
-import com.ernieyu.feedparser.FeedType;
-import com.ernieyu.feedparser.Item;
 
 /**
  * Test case using live feeds.
@@ -34,12 +27,12 @@ public class LiveFeedTestSuite {
     private FeedParser feedParser;
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp() {
         feedParser = FeedParserFactory.newParser();
     }
 
     @After
-    public void tearDown() throws Exception {
+    public void tearDown() {
         feedParser = null;
     }
 

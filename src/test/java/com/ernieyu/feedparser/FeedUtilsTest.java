@@ -10,19 +10,17 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.ernieyu.feedparser.FeedUtils;
-
 /**
  * Test case for FeedUtils.
  */
 public class FeedUtilsTest {
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp() {
     }
 
     @After
-    public void tearDown() throws Exception {
+    public void tearDown() {
     }
 
     /** Tests method to convert Atom date text. */

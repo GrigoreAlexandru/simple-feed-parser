@@ -11,9 +11,6 @@ import org.junit.Test;
 import org.xml.sax.Attributes;
 import org.xml.sax.helpers.AttributesImpl;
 
-import com.ernieyu.feedparser.Element;
-import com.ernieyu.feedparser.impl.BaseElement;
-
 /**
  * Test case for BaseElement.
  */
@@ -24,12 +21,12 @@ public class BaseElementTest {
     private BaseElement element;
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp() {
         element = new BaseElement(URI, NAME);
     }
 
     @After
-    public void tearDown() throws Exception {
+    public void tearDown() {
         element = null;
     }
 

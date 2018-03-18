@@ -13,22 +13,22 @@ public interface Element {
     /**
      * Returns the namespace URI.
      */
-    public String getUri();
+    String getUri();
 
     /**
      * Returns the element name.
      */
-    public String getName();
+    String getName();
     
     /**
      * Returns the attributes associated with the element.
      */
-    public Attributes getAttributes();
+    Attributes getAttributes();
     
     /**
      * Returns the element content.
      */
-    public String getContent();
+    String getContent();
 
 
     
@@ -36,17 +36,17 @@ public interface Element {
      * Returns the first child element associated with the specified name.
      * Returns null if the element does not exist.
      */
-    public Element getElement(String name);
+    Element getElement(String name);
     
     /**
      * Returns a list of child elements associated with the specified name.
      * Returns an empty list if no elements are available.
      */
-    public List<Element> getElementList(String name);
+    List<Element> getElementList(String name);
     
     /**
      * Returns a set of keys for all child elements.  This allows an 
      * application to iterate through the elements.
      */
-    public Set<String> getElementKeys();
+    Set<String> getElementKeys();
 }

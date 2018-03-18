@@ -2,7 +2,6 @@ package com.ernieyu.feedparser.impl;
 
 import java.util.*;
 
-import com.sun.istack.internal.Nullable;
 import org.xml.sax.Attributes;
 
 import com.ernieyu.feedparser.Element;

@@ -15,11 +15,6 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.ernieyu.feedparser.Element;
-import com.ernieyu.feedparser.Feed;
-import com.ernieyu.feedparser.FeedType;
-import com.ernieyu.feedparser.Item;
-
 /**
  * Test case for DefaultFeedParser.
  */
@@ -27,12 +22,12 @@ public class DefaultFeedParserTest {
     private DefaultFeedParser feedParser;
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp() {
         feedParser = new DefaultFeedParser();
     }
 
     @After
-    public void tearDown() throws Exception {
+    public void tearDown() {
         feedParser = null;
     }
 
