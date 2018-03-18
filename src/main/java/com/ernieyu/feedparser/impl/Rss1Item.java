@@ -21,6 +21,8 @@ class Rss1Item extends BaseItem {
     private static final String DATE = "pubDate";
     private static final String CREATOR = "creator";
     private static final String IDENTIFIER = "identifier";
+    private static final String THUMBNAIL = "thumbnail";
+    private static final String ENCODED = "encoded";
     
     /**
      * Constructs an Rss1Item with the specified namespace uri, name and
@@ -77,5 +79,19 @@ class Rss1Item extends BaseItem {
     @Override
     public List<String> getCategories() {
         return Collections.<String>emptyList();
+    }
+
+    @Override
+    public String getThumbnail() {
+        if (getElement(THUMBNAIL) != null) return getElement(THUMBNAIL).getAttributes().getValue("url");
+        else if (getElement("content") != null) return getElement("content").getAttributes().getValue("url");
+        else if (getElement("group") != null) return getElement("group").getElement("content").getAttributes().getValue(1);
+        else return null;
+    }
+
+    @Override
+    public String getEncoded() {
+        Element encoded = getElement(ENCODED);
+        return (encoded != null) ? encoded.getContent() : null;
     }
 }

@@ -1,8 +1,6 @@
 package com.ernieyu.feedparser.impl;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 import org.xml.sax.Attributes;
 
@@ -22,6 +20,9 @@ class Rss2Item extends BaseItem {
     private static final String AUTHOR = "author";
     private static final String GUID = "guid";
     private static final String CATEGORY = "category";
+    private static final String THUMBNAIL = "thumbnail";
+    private static final String ENCODED = "encoded";
+    private static final String CREATOR = "creator";
     
     /**
      * Constructs an Rss2Item with the specified namespace uri, name and
@@ -56,8 +57,8 @@ class Rss2Item extends BaseItem {
 
     @Override
     public String getAuthor() {
-        Element author = getElement(AUTHOR);
-        return (author != null) ? author.getContent() : null;
+        Element author = getElement(CREATOR) != null ? getElement(CREATOR) :  getElement(AUTHOR) ;
+        return author.getContent();
     }
 
     @Override
@@ -84,4 +85,20 @@ class Rss2Item extends BaseItem {
         
         return categories;
     }
+
+    @Override
+    public String getThumbnail() {
+        if (getElement(THUMBNAIL) != null) return getElement(THUMBNAIL).getAttributes().getValue("url");
+        else if (getElement("content") != null) return getElement("content").getAttributes().getValue("url");
+        else if (getElement("group") != null) return getElement("group").getElement("content").getAttributes().getValue(1);
+        else return null;
+    }
+
+    @Override
+    public String getEncoded() {
+        Element encoded = getElement(ENCODED);
+        return (encoded != null) ? encoded.getContent() : null;
+    }
+
+
 }

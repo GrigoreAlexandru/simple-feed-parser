@@ -29,6 +29,8 @@ public interface Element {
      * Returns the element content.
      */
     public String getContent();
+
+
     
     /**
      * Returns the first child element associated with the specified name.

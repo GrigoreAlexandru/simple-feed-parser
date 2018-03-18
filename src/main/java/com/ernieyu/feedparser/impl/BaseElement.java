@@ -22,7 +22,7 @@ class BaseElement implements Element {
     private final Attributes attributes;
     private final Map<String, List<Element>> elementMap = new HashMap<String, List<Element>>();
     private String content;
-    
+
     /**
      * Constructs an Element with the specified namespace uri and name.
      */
@@ -61,6 +61,7 @@ class BaseElement implements Element {
     public String getContent() {
         return content;
     }
+
     
     /**
      * Sets the element content.

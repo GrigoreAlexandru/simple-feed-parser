@@ -2,6 +2,7 @@ package com.ernieyu.feedparser;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 /**
  * A web feed that contains the items.
@@ -52,4 +53,8 @@ public interface Feed extends Element {
      * Returns a list of Items in the feed.
      */
     public List<Item> getItemList();
+
+    public Map<String, String> getCloud();
+
+    public String getWebSub();
 }

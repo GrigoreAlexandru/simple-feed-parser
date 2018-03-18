@@ -24,7 +24,9 @@ class AtomItem extends BaseItem {
     private static final String AUTHOR = "author";
     private static final String NAME = "name";
     private static final String CATEGORY = "category";
-    
+    private static final String THUMBNAIL = "thumbnail";
+    private static final String ENCODED = "encoded";
+
     /**
      * Constructs an AtomItem with the specified namespace uri, name and 
      * attributes.
@@ -88,7 +90,21 @@ class AtomItem extends BaseItem {
         for (Element element : elementList) {
             categories.add(element.getAttributes().getValue("term"));
         }
-        
+
         return categories;
+    }
+
+    @Override
+    public String getThumbnail() {
+        if (getElement(THUMBNAIL) != null) return getElement(THUMBNAIL).getAttributes().getValue("url");
+        else if (getElement("content") != null) return getElement("content").getAttributes().getValue("url");
+        else if (getElement("group") != null) return getElement("group").getElement("content").getAttributes().getValue(1);
+        else return null;
+    }
+
+    @Override
+    public String getEncoded() {
+        Element encoded = getElement(ENCODED);
+        return (encoded != null) ? encoded.getContent() : null;
     }
 }

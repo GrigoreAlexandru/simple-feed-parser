@@ -2,6 +2,7 @@ package com.ernieyu.feedparser;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 /**
  * An item in the feed.  This represents an RSS item or an Atom entry.
@@ -37,6 +38,12 @@ public interface Item extends Element {
      * Convenience method to retrieve the guid.
      */
     public String getGuid();
+
+    public String getThumbnail();
+
+    public String getEncoded();
+
+
 
     /**
      * Convenience method to retrieve the published date.

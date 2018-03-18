@@ -1,9 +1,8 @@
 package com.ernieyu.feedparser.impl;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
+import com.sun.istack.internal.Nullable;
 import org.xml.sax.Attributes;
 
 import com.ernieyu.feedparser.Element;
@@ -107,5 +106,36 @@ class AtomFeed extends BaseElement implements Feed {
     @Override
     public String toString() {
         return getTitle();
+    }
+
+    @Override
+    public Map<String, String> getCloud() {
+        Element el = getElement("channel");
+        HashMap<String, String> map = null;
+        Element ele;
+        Attributes atr;
+        if (el != null && (ele = el.getElement("cloud")) != null && (atr = ele.getAttributes()) != null){
+            map = new HashMap<String, String>();
+            map.put("domain", atr.getValue("domain"));
+            map.put("port", atr.getValue("port"));
+            map.put("path", atr.getValue("path"));
+            map.put("registerProcedure", atr.getValue("registerProcedure"));
+            map.put("protocol", atr.getValue("protocol"));
+        }
+        return map;
+    }
+
+    @Override
+    public String getWebSub() {
+	    Element element = getElement("channel");
+        List<Element> list;
+        if ( element != null && (list = element.getElementList("link")) != null) {
+            for (Element el : list) {
+                Attributes atr = el.getAttributes();
+                String val = atr.getValue("rel");
+                if (val != null && val.equals("hub")) return atr.getValue("href");
+            }
+        }
+        return null;
     }
 }
