@@ -58,7 +58,7 @@ class Rss2Item extends BaseItem {
     @Override
     public String getAuthor() {
         Element author = getElement(CREATOR) != null ? getElement(CREATOR) :  getElement(AUTHOR) ;
-        return author.getContent();
+        return (author != null) ? author.getContent() : null;
     }
 
     @Override
