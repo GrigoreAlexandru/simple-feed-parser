@@ -45,11 +45,15 @@ class Rss1Feed extends BaseElement implements Feed {
 	}
 	
     @Override
-	public String getLink() {
+    public String getLink() {
         Element channel = getElement(CHANNEL);
-        Element link = channel.getElement(LINK);
-        return (link != null) ? link.getContent() : null;
-	}
+        for (Element element : channel.getElementList(LINK)) {
+            if (!element.getContent().isEmpty()) {
+                return element.getContent();
+            }
+        }
+        return null;
+    }
 	
     @Override
 	public String getDescription() {
